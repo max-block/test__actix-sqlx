@@ -5,8 +5,10 @@ use thiserror::Error;
 pub enum AppError {
     #[error("db error")]
     DbError(#[from] sqlx::Error),
-}
 
+    #[error("not found")]
+    NotFound,
+}
 
 impl ResponseError for AppError {}
 

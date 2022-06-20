@@ -6,4 +6,5 @@ mod server;
 mod service;
 mod util;
 
+pub use error::Result;
 pub use server::run;

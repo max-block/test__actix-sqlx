@@ -1,4 +1,4 @@
-use actix_web::{web, App as HttpApp, HttpServer};
+use actix_web::{middleware, web, App as HttpApp, HttpServer};
 
 use crate::{app::App, router::data1_router};
 
@@ -10,5 +10,8 @@ pub async fn run() -> std::io::Result<()> {
     let app = App::new(&database_url).await;
     let app = web::Data::new(app);
     log::info!("starting HTTP server at http://localhost:3000");
-    HttpServer::new(move || HttpApp::new().app_data(app.clone()).service(data1_router())).bind("localhost:3000")?.run().await
+    HttpServer::new(move || HttpApp::new().wrap(middleware::Logger::default()).app_data(app.clone()).service(data1_router()))
+        .bind("localhost:3000")?
+        .run()
+        .await
 }
