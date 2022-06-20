@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <script src="/static/sortable.min.js"></script>
+    <title>test-actix-sqlx</title>
+  </head>
+
+  <body class="container-fluid">
+
+    <header>
+      <div class="d-flex mt-2 align-items-center">
+        <h3>test-actix-sqlx</h3>
+        <div class="ms-5">
+
+          <a href="/data1" class="me-3">data1</a>
+          <a href="/data2" class="me-3">data2</a>
+
+        </div>
+
+        <a href="/logout" class="ms-5">logout</a>
+      </div>
+      <hr>
+    </header>
+
+    <main>
+      {% block content -%}{%- endblock %}
+    </main>
+
+    <footer>
+      <br>
+      <hr>
+      {{ now() | dt }}
+    </footer>
+
+    <script src="/static/bootstrap.bundle.min.js"></script>
+  </body>
+
+</html>

@@ -5,12 +5,15 @@ edition = "2021"
 
 [dependencies]
 actix-web = "4.1.0"
-anyhow = "1.0.57"
+actix-files = "0.6.1"
+tera = "1.16.0"
+anyhow = "1.0.58"
+thiserror = "1.0.31"
 chrono = { version = "0.4.19", features = ["serde"] }
 dotenv = "0.15.0"
 env_logger = "0.9.0"
 log = "0.4.17"
 serde = "1.0.137"
 serde_json = "1.0.81"
-sqlx = {version="0.6.0", features=["runtime-actix-native-tls", "postgres", "macros", "chrono", "json"]}
-thiserror = "1.0.31"
+sqlx = { version = "0.6.0", features = ["runtime-actix-native-tls", "postgres", "macros", "chrono", "json"] }
+

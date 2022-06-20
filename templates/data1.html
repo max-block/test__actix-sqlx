@@ -1,0 +1,29 @@
+{% extends "inc/layout.html" %}
+{% block content %}
+  <div class="menu">
+    <h3>data1</h3>
+  </div>
+
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>value</th>
+        <th>created_at</th>
+        <th>updated_at</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for d in data1_list%}
+        <tr>
+          <td>{{d.id}}</td>
+          <td>{{d.name}}</td>
+          <td>{{d.value}}</td>
+          <td>{{d.created_at | dt}}</td>
+          <td>{{d.updated_at}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  {% endblock %}

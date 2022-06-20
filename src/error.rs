@@ -8,6 +8,9 @@ pub enum AppError {
 
     #[error("not found")]
     NotFound,
+
+    #[error("tera error")]
+    TeraError(#[from] tera::Error)
 }
 
 impl ResponseError for AppError {}

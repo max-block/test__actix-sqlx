@@ -4,6 +4,7 @@ mod error;
 mod router;
 mod server;
 mod service;
+mod template;
 mod util;
 
 pub use error::Result;
