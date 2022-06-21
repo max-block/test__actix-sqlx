@@ -8,14 +8,14 @@
     <link href="/static/styles.css" rel="stylesheet">
     <link rel="shortcut icon" href="/static/favicon.ico">
     <script src="/static/sortable.min.js"></script>
-    <title>test-actix-sqlx</title>
+    <title>{{app_name}}</title>
   </head>
 
   <body class="container-fluid">
 
     <header>
       <div class="d-flex mt-2 align-items-center">
-        <h3>test-actix-sqlx</h3>
+        <h3>{{app_name}}</h3>
         <div class="ms-5">
 
           <a href="/data1" class="me-3">data1</a>
@@ -35,7 +35,7 @@
     <footer>
       <br>
       <hr>
-      {{ now() | dt }}
+      {{ now(utc=true) | dt }}
     </footer>
 
     <script src="/static/bootstrap.bundle.min.js"></script>

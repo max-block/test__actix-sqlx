@@ -1,21 +1,23 @@
 use actix_web::{get, web, Scope};
-use tera::{Context, Tera};
+use tera::Context;
 
-use crate::{template::{render, TemplateResult}, app::App};
+use crate::{
+    app::App,
+    template::{Template, TemplateResult},
+};
 
 #[get("/")]
-async fn index_page(tpl: web::Data<Tera>) -> TemplateResult {
-    render(tpl, "index.html", &Context::new())
+async fn index_page(tpl: web::Data<Template>) -> TemplateResult {
+    tpl.render("index.html")
 }
 
 #[get("/data1")]
-async fn data1_page(tpl: web::Data<Tera>, app: web::Data<App>) -> TemplateResult {
+async fn data1_page(tpl: web::Data<Template>, app: web::Data<App>) -> TemplateResult {
     let mut ctx = Context::new();
     let data1_list = app.db.get_all_data1().await?;
     ctx.insert("data1_list", &data1_list);
-    render(tpl, "data1.html", &ctx)
+    tpl.render_with_ctx("data1.html", ctx)
 }
-
 
 pub fn ui_router() -> Scope {
     web::scope("").service(index_page).service(data1_page)

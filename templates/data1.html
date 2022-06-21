@@ -12,6 +12,8 @@
         <th>value</th>
         <th>created_at</th>
         <th>updated_at</th>
+        <th>process</th>
+        <th>view</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +23,11 @@
           <td>{{d.name}}</td>
           <td>{{d.value}}</td>
           <td>{{d.created_at | dt}}</td>
-          <td>{{d.updated_at}}</td>
+          <td>{{d.updated_at | dt}}</td>
+          <td><a href="/api-post/data1/{{d.id}}">process</a></td>
+          <td>
+            <a href="/api/data1/{{d.id}}">view</a>
+          </td>
         </tr>
         {%endfor%}
       </tbody>

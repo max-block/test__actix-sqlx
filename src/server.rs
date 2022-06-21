@@ -4,7 +4,7 @@ use actix_web::{middleware, web, App as HttpApp, HttpServer};
 use crate::{
     app::App,
     router::{data1_router, ui_router},
-    template::init_tera,
+    template::Template,
 };
 
 pub async fn run() -> std::io::Result<()> {
@@ -16,14 +16,14 @@ pub async fn run() -> std::io::Result<()> {
     let app = App::new(&database_url).await;
     let app = web::Data::new(app);
 
-    let tera = init_tera().unwrap();
-    let tera = web::Data::new(tera);
+    let tpl = Template::new().unwrap();
+    let tpl = web::Data::new(tpl);
 
     log::info!("starting HTTP server at http://localhost:3000");
     HttpServer::new(move || {
         HttpApp::new()
             .wrap(middleware::Logger::default())
-            .app_data(tera.clone())
+            .app_data(tpl.clone())
             .app_data(app.clone())
             .service(Files::new("/static", "static"))
             .service(data1_router())
